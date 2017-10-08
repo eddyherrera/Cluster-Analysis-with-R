@@ -1,1 +1,13 @@
+install.packages("rattle.data")#instalar paquete
+library(rattle.data)#cargar la libreria
+#cargar las bases de datos
+data(wine, package="rattle.data")#cargar un dataset
+head(wine,10)
+help(wine)
+#Estadísticos Básicos
+with(wine, tapply(Proanthocyanins, list(Type), mean, na.rm=TRUE))
+summary(wine[,c("Alcalinity", "Alcohol", "Ash", "Color", "Dilution", "Flavanoids", 
+  "Hue", "Magnesium", "Malic", "Nonflavanoids", "Phenols", "Proanthocyanins", "Proline"),
+   drop=FALSE], groups=wine$Type, statistics=c("mean", "sd", "IQR", "quantiles"), 
+  quantiles=c(0,.25,.5,.75,1))
 
